@@ -49,11 +49,13 @@
     17: "Conception of mortality"
     18: "Foundational of consciousness"
 - table: Reaction
-  roll: 1d6
+  roll: 1d8
   result:
-    1: Fear
-    2: Disgust
-    3: Anger
-    4: Surprise
-    5: Sadness
-    6: Happiness
+    1: Terror
+    2: Amazement
+    3: Grief
+    4: Loathing
+    5: Rage
+    6: Vigilance
+    7: Ecstacy
+    8: Admiration
