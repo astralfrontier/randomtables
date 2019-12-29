@@ -1,6 +1,6 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const { add, assoc, filter, has, map, pluck, propOr, reduce, reject, times } = require('ramda');
+const { add, assoc, filter, has, map, omit, pluck, propOr, reduce, reject, times } = require('ramda');
 const yaml = require('js-yaml');
 
 const program = require('commander');
@@ -60,6 +60,8 @@ function buildResults(answers) {
       }  
     }
   }
+  const omitKeys = pluck('omit', script);
+  newAnswers = omit(omitKeys, newAnswers);
   console.log(yaml.safeDump(newAnswers));
   return newAnswers;
 }
