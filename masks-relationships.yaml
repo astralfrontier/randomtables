@@ -1,3 +1,6 @@
+- question:
+    name: PC
+    message: "Enter the PC's name:"
 - table: Relationship
   roll: 2d6
   result:
