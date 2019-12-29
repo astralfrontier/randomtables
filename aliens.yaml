@@ -32,9 +32,9 @@
     7: "Anatomical construction (limb count, etc.)"
     8: "Moral values"
     9: "Source of nourishment"
-    10: "Life support (air, temperature, sleep, etc.)"
-    11: "Reproductive function (cloning, parasitism, etc.)"
-    12: "Metabolic basis"
+    10: "Communication"
+    11: "Life support (air, temperature, sleep, etc.)"
+    12: "Reproductive function (cloning, parasitism, etc.)"
 - table: Quality
   if:
     key: alienness
@@ -42,9 +42,9 @@
   roll: 2d6
   result:
     <<: *secondTable
-    13: "Lifecycle (hibernation, stasis, etc.)"
-    14: "Foundational emotions or instincts"
-    15: "Preference for boardgames"
+    13: "Metabolic basis"
+    14: "Lifecycle (hibernation, stasis, etc.)"
+    15: "Foundational emotions or instincts"
     16: "Logic and cognition"
     17: "Conception of mortality"
     18: "Foundational of consciousness"
