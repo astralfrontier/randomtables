@@ -1,0 +1,59 @@
+- omit: alienness
+  question:
+    name: alienness
+    message: "How alien are your aliens?"
+    type: list
+    choices:
+      - name: "Rubber-Forehead Aliens (e.g. Star Trek)"
+        value: mild
+      - name: "Moderately Weird Aliens (e.g. Star Wars)"
+        value: moderate
+      - name: "Really Weird Aliens (e.g. Niven and Pournelle)"
+        value: severe
+- table: Quality
+  if:
+    key: alienness
+    value: mild
+  roll: 1d6
+  result: &firstTable
+    1: "Culture (arts, music, etc.)"
+    2: "Living environment"
+    3: "General appearance"
+    4: "Economic values"
+    5: "Social values"
+    6: "Sexuality & Family"
+- table: Quality
+  if:
+    key: alienness
+    value: moderate
+  roll: 2d6
+  result: &secondTable
+    <<: *firstTable
+    7: "Anatomical construction (limb count, etc.)"
+    8: "Moral values"
+    9: "Source of nourishment"
+    10: "Life support (air, temperature, sleep, etc.)"
+    11: "Reproductive function (cloning, parasitism, etc.)"
+    12: "Metabolic basis"
+- table: Quality
+  if:
+    key: alienness
+    value: severe
+  roll: 2d6
+  result:
+    <<: *secondTable
+    13: "Lifecycle (hibernation, stasis, etc.)"
+    14: "Foundational emotions or instincts"
+    15: "Preference for boardgames"
+    16: "Logic and cognition"
+    17: "Conception of mortality"
+    18: "Foundational of consciousness"
+- table: Reaction
+  roll: 1d6
+  result:
+    1: Fear
+    2: Disgust
+    3: Anger
+    4: Surprise
+    5: Sadness
+    6: Happiness

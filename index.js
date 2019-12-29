@@ -41,15 +41,19 @@ function buildResults(answers) {
   for (let table of tables) {
     var ifCondition = true
     if (table.if) {
-      if(newAnswers[table.if.key] != table.if.value) {
-        ifCondition = false
+      ifCondition = false
+      if(newAnswers[table.if.key] == table.if.value) {
+        ifCondition = true
       }
     }
     if (ifCondition) {
       const [num, size] = map(parseInt, table['roll'].split('d'));
       const roll = manyDice(num, size) + propOr(0, table.modifier, answers);
       for (let r in table.result) {
-        const [min, max] = map(parseInt, r.split('-'));
+        let [min, max] = map(parseInt, r.split('-'));
+        if (!max) {
+          max = min
+        }
         if (roll >= min && roll <= max) {
           newAnswers = assoc(table.table, table.result[r], newAnswers);
         }
