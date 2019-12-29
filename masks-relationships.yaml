@@ -4,18 +4,18 @@
 - table: Relationship
   roll: 2d6
   result:
-    - 2-5: crush
-    - 6-8: friend
-    - 9-12: rival
+    2-5: crush
+    6-8: friend
+    9-12: rival
 - table: Position
   roll: 2d6
   result:
-    - 2-5: worse than me
-    - 6-8: as good as me
-    - 9-12: better than me
+    2-5: worse than me
+    6-8: as good as me
+    9-12: better than me
 - table: Arena
   roll: 2d6
   result:
-    - 2-5: scholastics
-    - 6-8: sports or extracurriculars
-    - 9-12: socializing
+    2-5: scholastics
+    6-8: sports or extracurriculars
+    9-12: socializing

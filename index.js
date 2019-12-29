@@ -41,12 +41,10 @@ function buildResults(answers) {
   for (let table of tables) {
     const [num, size] = map(parseInt, table['roll'].split('d'));
     const roll = manyDice(num, size) + propOr(0, table.modifier, answers);
-    for (let r of table.result) {
-      for (let k in r) {
-        const [min, max] = map(parseInt, k.split('-'));
-        if (roll >= min && roll <= max) {
-          newAnswers = assoc(table.table, r[k], newAnswers);
-        }
+    for (let r in table.result) {
+      const [min, max] = map(parseInt, r.split('-'));
+      if (roll >= min && roll <= max) {
+        newAnswers = assoc(table.table, table.result[r], newAnswers);
       }
     }
   }
