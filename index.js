@@ -39,13 +39,21 @@ function buildResults(answers) {
   var newAnswers = answers;
   const tables = reject(isPrompt, script);
   for (let table of tables) {
-    const [num, size] = map(parseInt, table['roll'].split('d'));
-    const roll = manyDice(num, size) + propOr(0, table.modifier, answers);
-    for (let r in table.result) {
-      const [min, max] = map(parseInt, r.split('-'));
-      if (roll >= min && roll <= max) {
-        newAnswers = assoc(table.table, table.result[r], newAnswers);
+    var ifCondition = true
+    if (table.if) {
+      if(newAnswers[table.if.key] != table.if.value) {
+        ifCondition = false
       }
+    }
+    if (ifCondition) {
+      const [num, size] = map(parseInt, table['roll'].split('d'));
+      const roll = manyDice(num, size) + propOr(0, table.modifier, answers);
+      for (let r in table.result) {
+        const [min, max] = map(parseInt, r.split('-'));
+        if (roll >= min && roll <= max) {
+          newAnswers = assoc(table.table, table.result[r], newAnswers);
+        }
+      }  
     }
   }
   console.log(yaml.safeDump(newAnswers));
@@ -58,8 +66,7 @@ async function processScript() {
   if (questions) {
     answers = await inquirer.prompt(pluck('question', questions));
   }
-  const newAnswers = times(() => buildResults(answers), parseInt(program.count) || 1);
-  // return newAnswers;
+  times(() => buildResults(answers), parseInt(program.count) || 1);
   return "Done";
 }
 
